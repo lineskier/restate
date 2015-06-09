@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+et= ["wolnostojacy", "apartament", "mieszkanie", "kawalerka", "pokoj", "biuro", "magazyn"]
+et.each{|d| EstateType.where(:name => d).create}

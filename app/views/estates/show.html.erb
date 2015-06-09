@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= link_to(image_tag(@estate.image_url, :width=>"200", :height=>"200"), @estate) %>
+</p>
+
+<p>
+  <strong>Nazwa:</strong>
+  <%= @estate.title %>
+</p>
+
+<p>
+  <strong>Cena:</strong>
+  <%= @estate.price %>
+</p>
+
+<p>
+  <strong>Opis:</strong>
+  <%= @estate.description %>
+</p>
+
+<p>
+  <strong>Adres:</strong>
+  <%= @estate.address %>
+</p>
+
+<%= link_to 'Edytuj', edit_estate_path(@estate) %> |
+<%= link_to 'Wróć', estates_path %>

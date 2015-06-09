@@ -1,0 +1,40 @@
+<%= form_for(@estate) do |f| %>
+  <% if @estate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estate.errors.count, "error") %> prohibited this estate from being saved:</h2>
+
+      <ul>
+      <% @estate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Nazwa" %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label "Cena" %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label "Opis" %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label "Dodaj Zdjęcie" %>
+    <%= @estate.image_url if @estate.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+
+  </div>
+  <div class="field">
+    <%= f.label "Lokalizacja" %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Zatwierdź" %>
+  </div>
+<% end %>

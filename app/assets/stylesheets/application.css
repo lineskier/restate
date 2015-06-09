@@ -12,4 +12,21 @@
  *
  *= require_tree .
  *= require_self
+ *= require twitter/bootstrap
  */
+.navbar .container{
+	border: 1px solid gray;
+}
+.container h3{
+	
+		margin: auto;
+	position: relative;
+}
+tr{
+	border-bottom: 1px solid green;
+	margin:5px;
+}
+td{
+	margin-bottom: 5px;
+	padding:5px;
+}
