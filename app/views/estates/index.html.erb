@@ -19,7 +19,7 @@
     <% @estates.each do |estate| %>
       <tr>
       <td><%= estate.id %></td>
-        <td><%= link_to(image_tag(estate.image_url, :width=>"200", :height=>"200"), estate) %> </td>
+        <td><%= link_to(image_tag(estate.image_url, :width=>"200", :height=>"170"), estate) %> </td>
 
         <td><%= estate.title %></td>
         <td><%= estate.price %></td>
@@ -30,7 +30,7 @@
         <% if user_signed_in? %>
         <td><%= link_to 'Edytuj', edit_estate_path(estate), :class=> "btn btn-small" %></td>
         <td><%= link_to 'Usuń', estate, method: :delete, data: { confirm: 'Na pewno?' }, :class=> "btn btn-small" %></td>
-        
+
          <% end %>
       </tr>
       <% end %>

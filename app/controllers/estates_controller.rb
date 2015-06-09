@@ -5,6 +5,7 @@ class EstatesController < ApplicationController
 
  
 
+
   # GET /estates
   # GET /estates.json
   def index
