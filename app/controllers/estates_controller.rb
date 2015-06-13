@@ -32,6 +32,12 @@ class EstatesController < ApplicationController
   # GET /estates/1.json
   def show
     @estate = Estate.find(params[:id])
+    @estates = Estate.all
+    @hash = Gmaps4rails.build_markers(@estates) do |estate, marker|
+    marker.lat estate.latitude
+    marker.lng estate.longitude
+    marker.infowindow estate.description
+end
   end
 
   # GET /estates/new
