@@ -1,43 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <h3>Nieruchomości </h3>
+<% @estates.each do |estate| %>
 
-<table>
-  <thead>
-    <tr>
-    <th># Ogłoszenia</th>
-    <th>Zdjęcie</th>
-      <th>Nazwa</th>
-      <th>Cena</th>
-      
-      <th>Lokalizacja</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @estates.each do |estate| %>
-      <tr>
-      <td><%= estate.id %></td>
-        <td><%= link_to(image_tag(estate.image_url, :width=>"200", :height=>"170"), estate) %> </td>
-
-        <td><%= estate.title %></td>
-        <td><%= estate.price %></td>
-                    
-        <td><%= estate.address %></td>
-
-        <td><%= link_to 'Pokaż', estate, :class=> "btn btn-success btn-small" %></td>
+  <div class="col-sm-6 col-md-4" >
+    <div class="thumbnail" >
+      <%= link_to(image_tag(estate.image_url), @estate) %>
+      <div class="caption">
+        <h3><%= estate.title %></h3>
+        <p>Cena: <%= estate.price %></p>
+        <p>Adres: <%= estate.address %></p>
+        <p>Opis: <%= estate.description %></p>
+        <p>
+        <%= link_to 'Pokaż', estate, :class => 'btn btn-primary', :role => 'button' %>
         <% if user_signed_in? %>
-        <td><%= link_to 'Edytuj', edit_estate_path(estate), :class=> "btn btn-small" %></td>
-        <td><%= link_to 'Usuń', estate, method: :delete, data: { confirm: 'Na pewno?' }, :class=> "btn btn-small" %></td>
+      <%= link_to 'Edytuj', edit_estate_path(estate), :class => 'btn btn-primary', :role => 'button' %>
+      <%= link_to 'Usuń', estate, method: :delete, data: { confirm: 'Na pewno?' }, :class=> "btn btn-small" %>
 
-         <% end %>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
+          <% end %>
+          </p>
+      </div>
+    </div>
+  </div>
 
-<br>
+<% end %>
 
 
 <%= link_to 'Dodaj Nieruchomość', new_estate_path %>

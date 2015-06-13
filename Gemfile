@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'gmaps4rails'
 gem 'devise'
 gem 'rails',                   '4.2.0'
 gem 'bcrypt',                  '3.1.7'

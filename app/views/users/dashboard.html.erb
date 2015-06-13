@@ -2,10 +2,28 @@
 <hr>
 Masz <%= @estates.count %> ogłoszeń w naszej bazie.
 Twoje ogłoszenia:
-<p>
+<div class="container">
 	<% @estates.each do |estate| %>
-		<ul class="list-style: none">
-			<li><%= link_to "#{estate.title}", estate, :class => "btn btn-default" %></li>
-		</ul>
-	<% end %>
-</p>
+<div class="row" >
+  <div class="col-sm-6 col-md-4" >
+    <div class="thumbnail" >
+      <%= link_to(image_tag(estate.image_url), @estate) %>
+      <div class="caption">
+        <h3><%= estate.title %></h3>
+        <p>Cena: <%= estate.price %></p>
+        <p>Adres: <%= estate.address %></p>
+        <p>Opis: <%= estate.description %></p>
+        <p>
+        <%= link_to 'Pokaż', estate, :class => 'btn btn-primary', :role => 'button' %>
+        <% if user_signed_in? %>
+      <%= link_to 'Edytuj', edit_estate_path(estate), :class => 'btn btn-primary', :role => 'button' %>
+      <%= link_to 'Usuń', estate, method: :delete, data: { confirm: 'Na pewno?' }, :class=> "btn btn-small" %>
+
+          <% end %>
+          </p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>

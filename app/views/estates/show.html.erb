@@ -1,31 +1,26 @@
 <p id="notice"><%= notice %></p>
+<div class="jumbotron" style="background-image:">
+  <div class="container">
+  <div class="thumbnail">
+    <%= link_to(image_tag(@estate.image_url), @estate)  %>
+  	  <div class="caption">
+        <h3><%= @estate.title %></h3>
+        <p>Cena: <%= @estate.price %></p>
+        <p>Adres: <%= @estate.address %></p>
+        <p>Opis: <%= @estate.description %></p>
+        <p>
+          <% if user_signed_in? %>
+      <%= link_to 'Edytuj', edit_estate_path(@estate), :class => 'btn btn-primary', :role => 'button' %>
+      <%= link_to 'Usuń', @estate, method: :delete, data: { confirm: 'Na pewno?' }, :class=> "btn btn-danger" %>
 
-<p>
-  <%= link_to(image_tag(@estate.image_url, :width=>"200", :height=>"200"), @estate) %>
-</p>
+          <% end %>
+          </p>
+      </div>
+  </div>
+  </div>
+</div>
 
-<p>
-  <strong>Nazwa:</strong>
-  <%= @estate.title %>
-</p>
 
-<p>
-  <strong>Cena:</strong>
-  <%= @estate.price %>
-</p>
 
-<p>
-  <strong>Opis:</strong>
-  <%= @estate.description %>
-</p>
-
-<p>
-  <strong>Adres:</strong>
-  <%= @estate.address %>
-</p>
-<p>
-  <strong>ID ogłoszenia:</strong>
-  <%= @estate.id %>
-</p>
-<%= link_to 'Edytuj', edit_estate_path(@estate) %> |
-<%= link_to 'Wróć', estates_path %>
+<div class="row">
+<%= link_to ' <-- Wróć do listy nieruchomości', estates_path %></div>

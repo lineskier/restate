@@ -1,6 +1,6 @@
 class EstatesController < ApplicationController
   before_action :set_estate, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_filter :authenticate_user! , only: [:new, :edit, :create, :update, :destroy]
  
 
  
@@ -37,7 +37,8 @@ class EstatesController < ApplicationController
 
   def create
     @estate = Estate.new(estate_params)
-
+    @estate.user_id = current_user.id
+    
     respond_to do |format|
       if @estate.save
         format.html { redirect_to @estate, notice: 'Nieruchomość została dodana.' }
@@ -68,7 +69,7 @@ class EstatesController < ApplicationController
   def destroy
     @estate.destroy
     respond_to do |format|
-      format.html { redirect_to estates_url, notice: 'Estate was successfully destroyed.' }
+      format.html { redirect_to estates_url, notice: 'Usunięto' }
       format.json { head :no_content }
     end
   end
