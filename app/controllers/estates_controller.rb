@@ -20,6 +20,7 @@ class EstatesController < ApplicationController
   # GET /estates/1
   # GET /estates/1.json
   def show
+    @estate = Estate.find(params[:id])
   end
 
   # GET /estates/new

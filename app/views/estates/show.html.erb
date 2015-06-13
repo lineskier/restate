@@ -23,6 +23,9 @@
   <strong>Adres:</strong>
   <%= @estate.address %>
 </p>
-
+<p>
+  <strong>ID ogłoszenia:</strong>
+  <%= @estate.id %>
+</p>
 <%= link_to 'Edytuj', edit_estate_path(@estate) %> |
 <%= link_to 'Wróć', estates_path %>

@@ -1,0 +1,11 @@
+<h3>Witaj, <%= @user.email %> </h3>
+<hr>
+Masz <%= @estates.count %> ogłoszeń w naszej bazie.
+Twoje ogłoszenia:
+<p>
+	<% @estates.each do |estate| %>
+		<ul class="list-style: none">
+			<li><%= link_to "#{estate.title}", estate, :class => "btn btn-default" %></li>
+		</ul>
+	<% end %>
+</p>

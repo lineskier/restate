@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'users/dashboard'
+
   devise_for :models
   devise_for :users
   resources :estates
