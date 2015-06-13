@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'geocoder'
 gem 'gmaps4rails'
 gem 'devise'
 gem 'rails',                   '4.2.0'

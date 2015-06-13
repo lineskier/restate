@@ -14,4 +14,10 @@ def self.to_csv(options = {})
 	end
 end
 
+
+def self.buy
+	self.status = 'niedostepne'
+end
+
+
 end

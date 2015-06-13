@@ -13,6 +13,9 @@
         <p>Opis: <%= estate.description %></p>
         <p>
         <%= link_to 'Pokaż', estate, :class => 'btn btn-primary', :role => 'button' %>
+        
+        
+
         <% if user_signed_in? %>
       <%= link_to 'Edytuj', edit_estate_path(estate), :class => 'btn btn-primary', :role => 'button' %>
       <%= link_to 'Usuń', estate, method: :delete, data: { confirm: 'Na pewno?' }, :class=> "btn btn-small" %>

@@ -4,13 +4,17 @@ class EstatesController < ApplicationController
   before_filter :require_permission, only: [:edit, :update, :destroy]
 
   def require_permission
-    if current_user != Estate.find(params[:id]).user_id
+    if current_user != Estate.find(params[:id]).user
       redirect_to root_path
     end
-    
+
   end
 
- 
+ def buy
+    @estate = Estate.find(params[:id])
+    @estate.status = 'niedostepny'
+ end
+
 
 
   # GET /estates

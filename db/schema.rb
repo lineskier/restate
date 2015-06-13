@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613115154) do
+ActiveRecord::Schema.define(version: 20150613165642) do
 
   create_table "controllers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150613115154) do
     t.datetime "updated_at",  null: false
     t.string   "image"
     t.integer  "user_id"
+    t.string   "status"
   end
 
   add_index "estates", ["user_id"], name: "index_estates_on_user_id"

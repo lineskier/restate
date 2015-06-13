@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   get 'users/dashboard'
-
+  get 'estate/buy'
   devise_for :models
   devise_for :users
   resources :estates
