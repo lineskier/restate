@@ -15,8 +15,9 @@
         <%= link_to 'Pokaż', estate, 'data-no-turbolink' => :true, :class => 'btn btn-primary', :role => 'button' %>
         <% if estate.status == 'dostepne' %>
           
-      <%= link_to 'Zarezerwuj', estate , :class => 'btn btn-primary', :role => 'button' %>
+        <%= link_to 'Rezerwacja', {:controller => :estates, :action => :toggle_status, :id => estate.id}, {:remote => true, :class => "btn btn-success" } %>
 
+      
         <% end %>
 
         <% if current_user == estate.user %>

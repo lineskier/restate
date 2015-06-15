@@ -1,5 +1,5 @@
 class Estate < ActiveRecord::Base
-	
+
 	
 
 

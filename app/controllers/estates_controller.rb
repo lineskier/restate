@@ -9,13 +9,17 @@ class EstatesController < ApplicationController
     end
 
   end
+def estate_params
+  params.require(:estate).permit(:status)
+end
+
 
  def buy
     @estate = Estate.find(params[:id])
     @estate.status = 'niedostepny'
  end
 
- def rezerwacja
+ def rezerwuj
   @estate = Estate.find(params[:id])
   @estate.status = 'zarezerwowane'
  end
@@ -24,7 +28,17 @@ class EstatesController < ApplicationController
  @estate = Estate.find(params[:id])
   @estate.status = 'dostepne'
  end
+   def toggle_status
+   @estate = Estate.find(params[:id])
+   @estate.toggle!(:status)
+   @estate.status = 'zarezerwowane'
 
+   respond_to do |format|
+    flash[:success] = "Zarezerwowano"
+    format.html {redirect_to estate}
+    format.js
+  end
+  end
 
 
   # GET /estates
@@ -65,6 +79,8 @@ end
   def create
     @estate = Estate.new(estate_params)
     @estate.user_id = current_user.id
+
+    
 
     respond_to do |format|
       if @estate.save
