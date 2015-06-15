@@ -15,6 +15,16 @@ class EstatesController < ApplicationController
     @estate.status = 'niedostepny'
  end
 
+ def rezerwacja
+  @estate = Estate.find(params[:id])
+  @estate.status = 'zarezerwowane'
+ end
+
+ def zwolnij
+ @estate = Estate.find(params[:id])
+  @estate.status = 'dostepne'
+ end
+
 
 
   # GET /estates
@@ -33,7 +43,7 @@ class EstatesController < ApplicationController
   def show
     @estate = Estate.find(params[:id])
     @estates = Estate.all
-    @hash = Gmaps4rails.build_markers(@estates) do |estate, marker|
+    @hash = Gmaps4rails.build_markers(@estate) do |estate, marker|
     marker.lat estate.latitude
     marker.lng estate.longitude
     marker.infowindow estate.description

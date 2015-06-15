@@ -11,6 +11,7 @@
         <h3><%= @estate.title %></h3>
         <p>Cena: <%= @estate.price %></p>
         <p>Adres: <%= @estate.address %></p>
+        <p>Status: <%= @estate.status %></p>
         <p>Opis: <%= @estate.description %></p>
         <p>
           <% if user_signed_in? %>
@@ -26,30 +27,17 @@
 Lokalizacja:
 
 <div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+  <div id="map" style='width: 800px; height: 450px;'></div>
 </div>
-
-
-
 <script type="text/javascript">
 	handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-      {
-        "lat": 40.000,
-        "lng": 70.000,
-        "picture": {
-          "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-          "width":  36,
-          "height": 36
-        },
-        "infowindow": "hello!"
-      }
-    ]);
+  markers = handler.addMarkers(<% raw @hash.to_json %>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 });
 </script>
+</br>
 
 <div class="row">
 <%= link_to ' <-- Wróć do listy nieruchomości', estates_path %></div>

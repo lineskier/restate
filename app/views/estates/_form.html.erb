@@ -24,6 +24,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :status %>
+    <%= select_tag(:status, options_for_select(['dostepne', 'zarezerwowane']) )  %>
+     </div>
+  <div class="field">
     <%= f.label "Dodaj Zdjęcie" %>
     <%= @estate.image_url if @estate.image? %>
     <%= f.file_field :image %>

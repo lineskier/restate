@@ -12,13 +12,19 @@
         <p>Adres: <%= estate.address %></p>
         <p>Opis: <%= estate.description %></p>
         <p>
-        <%= link_to 'Pokaż', estate, 'data-no-turbolink' => false, :class => 'btn btn-primary', :role => 'button' %>
-        
-        
+        <%= link_to 'Pokaż', estate, 'data-no-turbolink' => :true, :class => 'btn btn-primary', :role => 'button' %>
+        <% if estate.status == 'dostepne' %>
+          
+      <%= link_to 'Zarezerwuj', estate , :class => 'btn btn-primary', :role => 'button' %>
 
-        <% if user_signed_in? %>
+        <% end %>
+
+        <% if current_user == estate.user %>
+        
       <%= link_to 'Edytuj', edit_estate_path(estate), :class => 'btn btn-primary', :role => 'button' %>
+
       <%= link_to 'Usuń', estate, method: :delete, data: { confirm: 'Na pewno?' }, :class=> "btn btn-small" %>
+        <% else %>
 
           <% end %>
           </p>
@@ -29,4 +35,3 @@
 <% end %>
 
 
-<%= link_to 'Dodaj Nieruchomość', new_estate_path %>
